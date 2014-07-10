@@ -4,7 +4,7 @@
   var Game = Asteroids.Game = function (dimX, dimY, numAsteroids) {
     this.dimX = dimX;
     this.dimY = dimY;
-  
+  	
     this.bullets = [];
     this.ship = Asteroids.Ship.createShip(dimX, dimY);
     
@@ -86,13 +86,20 @@
   
   Game.prototype.removeAsteroid = function(asteroid){
     var index = this.asteroids.indexOf(asteroid);
-    delete this.asteroids[index];
+		this.asteroids.splice(index, 1);
   }
   
   Game.prototype.removeBullet = function(bullet){
     var index = this.bullets.indexOf(bullet);
-    delete this.bullets[index];
+		this.bullets.splice(index, 1);
   }
+	
+	Game.prototype.checkWin = function(){
+    if (this.asteroids.length === 0){
+      alert("You win!");
+      this.stopGame();
+    }
+	}
   
   Game.prototype.isOutOfBounds = function () {
     var game = this;
@@ -126,6 +133,7 @@
     var game = this;
     this.gameIntervalID = window.setInterval(function () {
       game.checkCollisions();
+      game.checkWin();
       game.isOutOfBounds();
       game.move();
       game.draw(ctx);
