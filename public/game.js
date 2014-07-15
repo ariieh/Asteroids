@@ -1,13 +1,17 @@
 (function (root) {
   var Asteroids = root.Asteroids = (root.Asteroids || {});
   
-  var Game = Asteroids.Game = function (dimX, dimY, numAsteroids) {
+  var Game = Asteroids.Game = function (dimX, dimY, numAsteroids, asteroids, spaceship, missile) {
     this.dimX = dimX;
     this.dimY = dimY;
   	
     this.bullets = [];
     this.ship = Asteroids.Ship.createShip(dimX, dimY);
-    
+		
+    Game.asteroids = asteroids;
+    Game.spaceship = spaceship;
+    Game.missile = missile;
+		
     this.populateAsteroids(dimX, dimY, numAsteroids);    
   }
   
@@ -114,11 +118,7 @@
     });
   }
   
-  Game.prototype.start = function (canvasEl, asteroid, spaceship, missile) {
-    Game.asteroid = asteroid;
-    Game.spaceship = spaceship;
-    Game.missile = missile;
-    
+  Game.prototype.start = function (canvasEl) {    
     this.bindKeyHandlers();
     var ctx = canvasEl.getContext("2d");
     this.step(ctx);

@@ -14,7 +14,7 @@
     }
     .hide{
       position:absolute;
-      top:-200px;
+      top:-500px;
     }
     </style>
 </head>
@@ -30,7 +30,13 @@
     <script src="game.js"></script>
     
     <div class="hide">
-    <img src="asteroid_gifs/Spinning-asteroid-1.gif" id="asteroid">
+    <img src="asteroid_gifs/asteroid-1.gif" class="asteroid">
+    <img src="asteroid_gifs/asteroid-2.gif" class="asteroid">
+    <img src="asteroid_gifs/asteroid-3.gif" class="asteroid">
+    <img src="asteroid_gifs/asteroid-4.gif" class="asteroid">
+    <img src="asteroid_gifs/asteroid-5.gif" class="asteroid">
+    <img src="asteroid_gifs/asteroid-6.gif" class="asteroid">
+	
     <img src="asteroid_gifs/spaceship.png" id="spaceship">
     <img src="asteroid_gifs/missile.gif" id="missile">
   </div>
@@ -41,11 +47,11 @@
 		var width = $(window).width();
 	
         var canvas = document.getElementsByTagName("canvas")[0];
-        var asteroid = document.getElementById("asteroid");
+        var asteroids = document.getElementsByClassName("asteroid");
         var spaceship = document.getElementById("spaceship");
         var missile = document.getElementById("missile");
 		$('canvas').attr({"width":width,"height":height});
-  	  	new Asteroids.Game(width, height, 15).start(canvas, asteroid, spaceship, missile);
+  	  	new Asteroids.Game(width, height, 15, asteroids, spaceship, missile).start(canvas);
 	});	  
 		
     </script>
