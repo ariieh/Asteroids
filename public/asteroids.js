@@ -24,14 +24,8 @@
 		}
 
     return new Asteroid(
-      [
-        aDimX,
-        aDimY
-      ],
-      [
-        ((Math.random()*3)-1),
-        ((Math.random()*3)-1)
-      ],
+      [aDimX, aDimY],
+      [((Math.random()*2)-1), ((Math.random()*2)-1)],
 			Asteroids.Game.asteroids[Math.floor(0 + Math.random() * 6)]
     );
   }
@@ -39,9 +33,6 @@
   Asteroid.inherits(Asteroids.MovingObject);
   
   Asteroid.prototype.draw = function (ctx) {
-		// if (!this.img) this.img = Math.floor(0 + Math.random() * 7);
-		// console.log(this.img)
-		
     ctx.drawImage(this.img, this.xAxis-25, this.yAxis-17);
     
     ctx.fillStyle = this.col;

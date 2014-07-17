@@ -38,7 +38,10 @@
     <img src="asteroid_gifs/asteroid-6.gif" class="asteroid">
 	
     <img src="asteroid_gifs/spaceship.png" id="spaceship">
+    <img src="asteroid_gifs/saucer.gif" id="enemyShip">
     <img src="asteroid_gifs/missile.gif" id="missile">
+    <img src="asteroid_gifs/football.gif" id="football">
+	
   </div>
     
     <script>
@@ -49,9 +52,12 @@
         var canvas = document.getElementsByTagName("canvas")[0];
         var asteroids = document.getElementsByClassName("asteroid");
         var spaceship = document.getElementById("spaceship");
+        var enemyShip = document.getElementById("enemyShip");
         var missile = document.getElementById("missile");
+        var football = document.getElementById("football");
+		
 		$('canvas').attr({"width":width,"height":height});
-  	  	new Asteroids.Game(width, height, 15, asteroids, spaceship, missile).start(canvas);
+  	  	new Asteroids.Game(width, height, 15, 2, asteroids, spaceship, enemyShip, missile, football).start(canvas);
 	});	  
 		
     </script>
